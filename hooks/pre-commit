@@ -1,0 +1,14 @@
+#!/bin/bash
+SUIVI=suivi
+
+read -p "Ajouter le fichier de suivi à ce commit (y/[n]) ? " yn < /dev/tty
+yn=${yn:-n}
+case $yn in
+  [Yy]* )
+    mkdir -p $SUIVI
+    echo "commit vérifié le $(date '+%d/%m/%Y %H:%M:%S')" > $SUIVI/commitInfo.txt
+    git add $SUIVI/commitInfo.txt
+    exit 0;;
+  * )
+    exit 0;;
+esac
